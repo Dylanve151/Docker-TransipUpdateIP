@@ -11,6 +11,7 @@ php -r "if (hash_file('sha384', '/tmp/composer-setup.php') === '756890a4488ce902
 php /tmp/composer-setup.php --install-dir /usr/bin --filename composer && \
 php -r "unlink('/tmp/composer-setup.php');" && \
 composer self-update --2
+WORKDIR /root/api
 RUN composer init --name 'transip/api' --description 'Transip API' --require 'transip/transip-api-php:^6' -n && \
 composer install
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -18,7 +19,6 @@ RUN mkdir /verbs
 ENV dnsEntryNames *
 ENV dnsEntryExpire 300
 ENV dnsEntryType A
-WORKDIR /root/api
 COPY startup.sh ..
 COPY Authenticate.php .
 COPY UpdateDNSentry.php .
