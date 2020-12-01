@@ -10,6 +10,11 @@ echo "$TransipUsername" > /verbs/TransipUsername
 echo "$WhitelistIPonly" > /verbs/WhitelistIPonly
 echo "$PrivateKey" > /verbs/PrivateKey
 
+sed -i 's/-----BEGIN PRIVATE KEY-----//' /verbs/PrivateKey
+sed -i 's/-----END PRIVATE KEY-----//' /verbs/PrivateKey
+cat /verbs/PrivateKey | tr " " "\n" > /verbs/PrivateKey
+
+
 #if [ -z "$TRIGGER_IP" ]
 #then
 #	echo "No Trigger IP" >> log.log
