@@ -5,13 +5,13 @@ use \Transip\Api\Library\TransipAPI;
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Your login name on the TransIP website.
-$login = '';
+$login = file_get_contents("/verbs/TransipUsername");
 
 // If the generated token should only be usable by whitelisted IP addresses in your Controlpanel
-$generateWhitelistOnlyTokens = false;
+$generateWhitelistOnlyTokens = file_get_contents("/verbs/WhitelistIPonly");
 
 // One of your private keys; these can be requested via your Controlpanel
-$privateKey = '';
+$privateKey = file_get_contents("/verbs/PrivateKey");
 
 $api = new TransipAPI(
        $login,
