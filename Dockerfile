@@ -19,6 +19,9 @@ RUN mkdir /verbs
 ENV dnsEntryNames *
 ENV dnsEntryExpire 300
 ENV dnsEntryType A
+ENV TransipUsername user
+ENV WhitelistIPonly false
+ENV PrivateKey privatekey
 COPY startup.sh ..
 COPY Authenticate.php .
 COPY UpdateDNSentry.php .
