@@ -18,7 +18,7 @@ $prev_publicIP = trim(file_get_contents("/verbs/prev_publicIP"));
 $publicIP = trim(file_get_contents("http://checkip.amazonaws.com/"));
 
 if($publicIP <> $prev_publicIP) {
-	if (is_array($values) || is_object($values)) {
+	if (is_array($dnsEntryNames) || is_object($dnsEntryNames)) {
 		foreach($dnsEntryNames as &$dnsEntryName) {
 			// Create a DNS entry object
 			$dnsEntry = new DnsEntry();
