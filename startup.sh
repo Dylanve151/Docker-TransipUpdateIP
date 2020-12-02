@@ -20,7 +20,7 @@ sed -i '1s/^/-----BEGIN PRIVATE KEY-----\n/' /verbs/PrivateKey
 echo '-----END PRIVATE KEY-----' >> /verbs/PrivateKey
 
 #fix DNS entry names
-tr ' ' '' < /verbs/dnsEntryNames > /tmp/dnsEntryNames && mv /tmp/dnsEntryNames /verbs/dnsEntryNames
+tr -d " " < /verbs/dnsEntryNames > /tmp/dnsEntryNames && mv /tmp/dnsEntryNames /verbs/dnsEntryNames
 
 #if [ -z "$TRIGGER_IP" ]
 #then
