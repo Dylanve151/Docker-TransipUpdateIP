@@ -14,9 +14,9 @@ $generateWhitelistOnlyTokens = file_get_contents("/verbs/WhitelistIPonly");
 $privateKey = file_get_contents("/verbs/PrivateKey");
 
 $api = new TransipAPI(
-       $login,
-       $privateKey,
-       $generateWhitelistOnlyTokens
+       "$login",
+       "$privateKey",
+       "$generateWhitelistOnlyTokens"
 );// Set all generated tokens to read only mode (optional)$api->setReadOnlyMode(false);
 
 // Create a test connection to the api
