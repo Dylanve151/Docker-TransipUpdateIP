@@ -10,12 +10,13 @@ require_once (__DIR__ . '/Authenticate.php');
 
 $domainName = trim(file_get_contents("/verbs/domainName"));
 
-$dnsEntryNames = trim(file_get_contents("/verbs/dnsEntryNames"));
+$dnsEntryNames = explode(',',trim(file_get_contents("/verbs/dnsEntryNames")));
 $dnsEntryExpire = trim(file_get_contents("/verbs/dnsEntryExpire"));
 $dnsEntryType = trim(file_get_contents("/verbs/dnsEntryType"));
 
 $prev_publicIP = trim(file_get_contents("/verbs/prev_publicIP"));
 $publicIP = trim(file_get_contents("http://checkip.amazonaws.com/"));
+
 
 if($publicIP <> $prev_publicIP) {
 	if (is_array($dnsEntryNames) || is_object($dnsEntryNames)) {
