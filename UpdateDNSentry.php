@@ -31,13 +31,13 @@ if($publicIP <> $prev_publicIP) {
 			$api->domainDns()->updateEntry($domainName, $dnsEntry);
 		}
 	} else {
-		$dnsEntryName = $dnsEntryNames
+		$dnsEntryName = $dnsEntryNames;
 		$dnsEntry = new DnsEntry();
 		$dnsEntry->setName($dnsEntryName);
 		$dnsEntry->setExpire($dnsEntryExpire);
 		$dnsEntry->setType($dnsEntryType);
 		$dnsEntry->setContent($publicIP);
-		
+
 		$api->domainDns()->updateEntry($domainName, $dnsEntry);
 	}
 	unset($dnsEntryName);
