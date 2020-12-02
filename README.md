@@ -1,7 +1,7 @@
 # docker-scheduledwol
 deploy:
 ```
-docker build --name="transip" --restart="always" --volume="/etc/localtime:/etc/localtime:ro" dylanve115/
+docker build --name="transipupdateip" --restart="always" --volume="/etc/localtime:/etc/localtime:ro" dylanve115/transipupdateip
 ```
 ## Environment variables:
 ### Required:
