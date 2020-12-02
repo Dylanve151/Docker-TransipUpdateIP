@@ -23,10 +23,12 @@ ENV dnsEntryType A
 ENV TransipUsername user
 ENV WhitelistIPonly false
 ENV PrivateKey privatekey
+COPY addcronjob.bash ..
 COPY startup.sh ..
 COPY Authenticate.php .
 COPY UpdateDNSentry.php .
 RUN touch log.log
-RUN chmod 755 /root/*.sh
+RUN chmod 755 /root/startup.sh
+RUN chmod 755 /root/addcronjob.bash
 RUN chmod 755 *.php
 CMD [ "/root/startup.sh" ]
