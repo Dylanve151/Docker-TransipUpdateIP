@@ -1,9 +1,4 @@
 #!/bin/bash
 #crontab time
 
-if [ -z "$CRONTIME" ]
-then
-	echo "No Crontime" >> log.log
-else
-	echo "$CRONTIME root /root/wakeup.bash >> /root/log.log"$'\n' > /etc/cron.d/wakeup
-fi
+echo "$CRONTIME root php /root/api/UpdateDNSentry.php >> /root/log.log"$'\n' > /etc/cron.d/UpdatePublicIP
