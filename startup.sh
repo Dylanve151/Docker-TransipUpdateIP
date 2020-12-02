@@ -3,12 +3,14 @@
 
 #bash /root/addcronjob.bash
 
+echo "$domainName" > /verbs/domainName
 echo "$dnsEntryNames" > /verbs/dnsEntryNames
 echo "$dnsEntryExpire" > /verbs/dnsEntryExpire
 echo "$dnsEntryType" > /verbs/dnsEntryType
 echo "$TransipUsername" > /verbs/TransipUsername
 echo "$WhitelistIPonly" > /verbs/WhitelistIPonly
 echo "$PrivateKey" > /verbs/PrivateKey
+thouch /verbs/prev_publicIP
 
 sed -i 's/-----BEGIN PRIVATE KEY----- //' /verbs/PrivateKey
 sed -i 's/ -----END PRIVATE KEY-----//' /verbs/PrivateKey
