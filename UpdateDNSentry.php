@@ -18,16 +18,27 @@ $prev_publicIP = trim(file_get_contents("/verbs/prev_publicIP"));
 $publicIP = trim(file_get_contents("http://checkip.amazonaws.com/"));
 
 if($publicIP <> $prev_publicIP) {
-	foreach($dnsEntryNames as &$dnsEntryName) {
-        // Create a DNS entry object
-        $dnsEntry = new DnsEntry();
-        $dnsEntry->setName($dnsEntryName);
-        $dnsEntry->setExpire($dnsEntryExpire);
-        $dnsEntry->setType($dnsEntryType);
-        $dnsEntry->setContent($publicIP);
+	if (is_array($values) || is_object($values)) {
+		foreach($dnsEntryNames as &$dnsEntryName) {
+			// Create a DNS entry object
+			$dnsEntry = new DnsEntry();
+			$dnsEntry->setName($dnsEntryName);
+			$dnsEntry->setExpire($dnsEntryExpire);
+			$dnsEntry->setType($dnsEntryType);
+			$dnsEntry->setContent($publicIP);
 
-        // Apply entry
-        $api->domainDns()->updateEntry($domainName, $dnsEntry);
+			// Apply entry
+			$api->domainDns()->updateEntry($domainName, $dnsEntry);
+		}
+	} else {
+		$dnsEntryName = $dnsEntryNames
+		$dnsEntry = new DnsEntry();
+		$dnsEntry->setName($dnsEntryName);
+		$dnsEntry->setExpire($dnsEntryExpire);
+		$dnsEntry->setType($dnsEntryType);
+		$dnsEntry->setContent($publicIP);
+		
+		$api->domainDns()->updateEntry($domainName, $dnsEntry);
 	}
 	unset($dnsEntryName);
         file_put_contents("/verbs/prev_publicIP", $publicIP);
