@@ -6,11 +6,17 @@ docker build --name="transipupdateip" --restart="always" --volume="/etc/localtim
 ## Environment variables:
 ### Required:
 domainName = Your domain name
+
 dnsEntryNames = name of DNS entry you want to update
+
 dnsEntryExpire = TTL of the DNS entry
+
 dnsEntryType = Type of the DNS entry
+
 TransipUsername = Your transip login username
+
 WhitelistIPonly = if true will create a api access token that only works form whitelisted ip addresses
+
 PrivateKey = private key from transip api. (paste as copied from transip website.)
 
 ### Optional:
