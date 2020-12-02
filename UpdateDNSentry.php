@@ -15,7 +15,7 @@ $dnsEntryExpire = trim(file_get_contents("/verbs/dnsEntryExpire"));
 $dnsEntryType = trim(file_get_contents("/verbs/dnsEntryType"));
 
 $prev_publicIP = trim(file_get_contents("/verbs/prev_publicIP"));
-$new_publicIP = trim(file_get_contents("http://checkip.amazonaws.com/"));
+$publicIP = trim(file_get_contents("http://checkip.amazonaws.com/"));
 
 if($publicIP <> $prev_publicIP) {
 	foreach($dnsEntryNames as &$dnsEntryName) {
@@ -24,11 +24,11 @@ if($publicIP <> $prev_publicIP) {
         $dnsEntry->setName($dnsEntryName);
         $dnsEntry->setExpire($dnsEntryExpire);
         $dnsEntry->setType($dnsEntryType);
-        $dnsEntry->setContent($new_publicIP);
+        $dnsEntry->setContent($publicIP);
 
         // Apply entry
         $api->domainDns()->updateEntry($domainName, $dnsEntry);
 	}
 	unset($dnsEntryName);
-        file_put_contents("/verbs/prev_publicIP", $new_publicIP);
+        file_put_contents("/verbs/prev_publicIP", $publicIP);
 }
