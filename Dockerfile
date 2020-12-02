@@ -16,6 +16,7 @@ RUN composer init --name 'transip/api' --description 'Transip API' --require 'tr
 composer install
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN mkdir /verbs
+ENV domainName domainname
 ENV dnsEntryNames *
 ENV dnsEntryExpire 300
 ENV dnsEntryType A
