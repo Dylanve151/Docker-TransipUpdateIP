@@ -8,7 +8,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $login = trim(file_get_contents("/verbs/TransipUsername"));
 
 // If the generated token should only be usable by whitelisted IP addresses in your Controlpanel
-$generateWhitelistOnlyTokens = trim(file_get_contents("/verbs/WhitelistIPonly"));
+$wlip = trim(file_get_contents("/verbs/WhitelistIPonly"));
+if ($wlip == "true"){
+        $generateWhitelistOnlyTokens = true;
+} else {
+        $generateWhitelistOnlyTokens = false;
+}
 
 // One of your private keys; these can be requested via your Controlpanel
 $privateKey = trim(file_get_contents("/verbs/PrivateKey"));
