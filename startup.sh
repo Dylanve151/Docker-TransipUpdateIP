@@ -1,8 +1,6 @@
 #!/bin/bash
 #startup script
 
-#bash /root/addcronjob.bash
-
 echo "$domainName" > /verbs/domainName
 echo "$dnsEntryNames" > /verbs/dnsEntryNames
 echo "$dnsEntryExpire" > /verbs/dnsEntryExpire
@@ -22,11 +20,7 @@ echo '-----END PRIVATE KEY-----' >> /verbs/PrivateKey
 #fix DNS entry names
 tr -d " " < /verbs/dnsEntryNames > /tmp/dnsEntryNames && mv /tmp/dnsEntryNames /verbs/dnsEntryNames
 
-#if [ -z "$TRIGGER_IP" ]
-#then
-#	echo "No Trigger IP" >> log.log
-#else
-#	echo "$TRIGGER_IP" > /verbs/TRIGGER_IP
-#fi
-#service cron start
+bash /root/addcronjob.bash
+service cron start
+
 tail -fn0 log.log
