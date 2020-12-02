@@ -26,7 +26,7 @@ ENV PrivateKey privatekey
 COPY startup.sh ..
 COPY Authenticate.php .
 COPY UpdateDNSentry.php .
-RUN touch log.log
+RUN touch /root/log.log
 RUN chmod 755 /root/*.sh
 RUN chmod 755 *.php
 CMD [ "/root/startup.sh" ]
