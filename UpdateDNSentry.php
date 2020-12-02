@@ -8,13 +8,13 @@ use Transip\Api\Library\Entity\Domain\DnsEntry;
 
 require_once (__DIR__ . '/Authenticate.php');
 
-$domainName = file_get_contents("/verbs/domainName");
+$domainName = trim(file_get_contents("/verbs/domainName"));
 
-$dnsEntryNames = file_get_contents("/verbs/dnsEntryNames");
-$dnsEntryExpire = file_get_contents("/verbs/dnsEntryExpire");
-$dnsEntryType = file_get_contents("/verbs/dnsEntryType");
+$dnsEntryNames = trim(file_get_contents("/verbs/dnsEntryNames"));
+$dnsEntryExpire = trim(file_get_contents("/verbs/dnsEntryExpire"));
+$dnsEntryType = trim(file_get_contents("/verbs/dnsEntryType"));
 
-$prev_publicIP = file_get_contents("/verbs/prev_publicIP");
+$prev_publicIP = trim(file_get_contents("/verbs/prev_publicIP"));
 $new_publicIP = trim(file_get_contents("http://checkip.amazonaws.com/"));
 
 if($publicIP <> $prev_publicIP) {
