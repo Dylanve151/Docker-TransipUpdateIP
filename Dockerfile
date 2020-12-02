@@ -17,7 +17,7 @@ composer install
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN mkdir /verbs
 ENV domainName domainname
-ENV dnsEntryNames dnsentryname
+ENV dnsEntryNames *
 ENV dnsEntryExpire 300
 ENV dnsEntryType A
 ENV TransipUsername user
