@@ -28,6 +28,8 @@ COPY addcronjob.bash ..
 COPY startup.sh ..
 COPY Authenticate.php .
 COPY UpdateDNSentry.php .
+COPY Certbot-DNS.sh .
+COPY UpdatePubIP.sh .
 RUN touch log.log
 RUN chmod 755 /root/startup.sh
 RUN chmod 755 /root/addcronjob.bash
