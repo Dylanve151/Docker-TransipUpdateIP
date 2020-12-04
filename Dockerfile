@@ -32,4 +32,5 @@ RUN touch log.log
 RUN chmod 755 /root/startup.sh
 RUN chmod 755 /root/addcronjob.bash
 RUN chmod 755 *.php
+RUN chmod 755 *.sh
 CMD [ "/root/startup.sh" ]
