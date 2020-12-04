@@ -11,7 +11,7 @@ cur_dnsEntryValue=""
 
 php UpdateDNSentry.php "$domainName" "$dnsEntryName" "$dnsEntryExpire" "$dnsEntryType" "$dnsEntryValue"
 
-while [[ "${dnsEntryValue}" != "${cur_dnsEntryValue}" ]]; do
+while [[ "${cur_dnsEntryValue}" != *"${dnsEntryValue}"* ]]; do
 	cur_dnsEntryValue=$(dig -t txt _acme-challenge.velst.nl +short)
 	sleep 10
 done
